@@ -1,0 +1,6 @@
+Make Chat User Stories
+1. Upon entering the application, I can choose a username to go by.
+2. I can enter a message that shows up on all clients.
+3. I can join / create chat channels.
+4. I will never have to refresh the page to recieve new messages.
+5. I can start a private message with another user (Stretch Challenge)
