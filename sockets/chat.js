@@ -27,12 +27,11 @@ module.exports = (io, socket, onlineUsers) => {
     // This fires when a user closes out of the application
     socket.on('disconnect', () => {
         // This deletes the user by using the username we saved to the socket
-        console.log("OnlineUser:", onlineUsers)
-        console.log("Socket.username:", socket.username)
-        console.log("Socket:", socket)
         delete onlineUsers[socket.username];
-        console.log("OnlineUser:", onlineUsers)
-        console.log('User out of here');
         io.emit('user has left', onlineUsers);
     });
+
+    socket.on('new channel', (newChannel) => {
+        console.log(newChannel);
+    })
 }
