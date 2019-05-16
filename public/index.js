@@ -7,6 +7,14 @@ $(document).ready( () => {
 
     // Get the online users from the server
     socket.emit('get online users');
+    // Each user should be in the general channel by default.
+    socket.emit('user changed channel', "General");
+
+    // Users can change the channel by clicking on its name.
+    $(document).on('click', '.channel', (e)=> {
+        let newChannel = e.target.textContent;
+        socket.emit('user changed channel', newChannel);
+    });
 
     $('#createUserBtn').click((e)=>{
         console.log("I'm here in this function")
@@ -128,19 +136,4 @@ $(document).ready( () => {
           `);
         });
     })
-    //
-    // $('#send-chat-btn').click((e) => {
-    //     e.preventDefault();
-    //     // Get the client's channel
-    //     let channel = $('.channel-current').text();
-    //     let message = $('#chat-input').val();
-    //     if(message.length > 0){
-    //         sender : currentUser, {
-    //         message : message,
-    //         // Send the channel over to the server
-    //         channel : channel
-    //     });
-    //     $('#chat-input').val("");
-    //     }
-    // });
 })
